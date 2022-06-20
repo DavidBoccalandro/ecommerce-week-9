@@ -1,0 +1,92 @@
+@import '../../../scss/colors';
+@import '../../../scss/mixins';
+
+.login-wrapper {
+  @include formater();
+  margin: 0 auto;
+  height: 100vh;
+
+  .mat-card-image {
+    width: 100%;
+  }
+
+  .mat-card {
+    @include formater();
+    padding: 4rem 2.5rem;
+    box-shadow: 1px 1px 5px $primary;
+    width: 95%;
+    max-width: 1100px;
+
+    .first-content img {
+      margin: 0;
+      max-width: 550px;
+    }
+
+
+
+    .second-content mat-card-header {
+      justify-content: center;
+
+      mat-card-title {
+        font-size: 30px;
+        font-weight: bolder;
+        margin: 2rem;
+      }
+    }
+
+    .second-content .form {
+      @include formater();
+
+      mat-card-content {
+        @include formater();
+        margin-bottom: 2rem;
+
+        .email,
+        .password {
+          width: 100%;
+        }
+
+        .alert {
+          color: $alerts;
+          margin-top: -15px;
+          max-width: 200px;
+
+          div {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .buttons {
+
+        #login-button {
+          @include principal-button();
+        }
+
+        span {
+          font-size: 14px;
+        }
+
+        #register-button {
+          @include secondary-button();
+        }
+      }
+
+    }
+  }
+}
+
+@media only screen and(min-width: 1024px) {
+  .login-wrapper .mat-card {
+    flex-direction: row;
+    gap: 2rem;
+
+    mat-card-content {
+      width: 100%;
+
+      #alert {
+        max-width: 240px;
+      }
+    }
+  }
+}

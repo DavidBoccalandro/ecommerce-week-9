@@ -1,0 +1,48 @@
+<div class="login-wrapper">
+  <mat-card>
+    <div class="first-content">
+      <img mat-card-image src="../../../assets/login.svg" alt="login">
+    </div>
+    <div class="second-content">
+      <mat-card-header>
+        <mat-card-title>Log in</mat-card-title>
+      </mat-card-header>
+      <form class="form" [formGroup]="form">
+        <mat-card-content>
+          <mat-form-field class="email">
+            <input matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+          <div *ngIf="getField('email')!.invalid && (getField('email')!.dirty || getField('email')!.touched)"
+            class="alert">
+            <div *ngIf="getField('email')!.errors?.['required']">
+              Email is required.
+            </div>
+            <div *ngIf="getField('email')!.errors?.['pattern']">
+              This is not a valid Email.
+            </div>
+          </div>
+          <mat-form-field class="password">
+            <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button type="button" matSuffix (click)="hide = !hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <div *ngIf="getField('password')!.invalid && (getField('password')!.dirty || getField('password')!.touched)"
+            class="alert" id="alert">
+            <div *ngIf="getField('password')!.errors?.['required']">
+              Password is required.
+            </div>
+            <div *ngIf="getField('password')!.errors?.['pattern']">
+              Minimum eight characters. At least one uppercase letter, one lowercase letter and one number.
+            </div>
+          </div>
+        </mat-card-content>
+        <div class="buttons">
+          <button mat-button id="login-button" type="submit" [disabled]="form.invalid">Log in</button>
+          <span>Don't have an account? </span>
+          <a id="register-button" type="button" routerLink="register">Register</a>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</div>

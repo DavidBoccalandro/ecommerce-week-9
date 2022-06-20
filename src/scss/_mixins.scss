@@ -1,0 +1,38 @@
+@mixin formater {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin principal-button {
+  background-color: $primary;
+  color: white;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  &:hover {
+    box-shadow: 1px 2px 10px $disableds;
+  }
+
+  &:disabled {
+    background-color: lightgray;
+    color: $disableds;
+    box-shadow: none;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+}
+
+@mixin secondary-button {
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    font-weight: bolder;
+    text-decoration: underline;
+    background-color: white;
+  }
+}
