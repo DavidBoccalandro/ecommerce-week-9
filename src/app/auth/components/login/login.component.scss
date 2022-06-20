@@ -1,5 +1,5 @@
-@import '../../../scss/colors';
-@import '../../../scss/mixins';
+@import '../../../../scss/colors';
+@import '../../../../scss/mixins';
 
 .login-wrapper {
   @include formater();
@@ -21,8 +21,6 @@
       margin: 0;
       max-width: 550px;
     }
-
-
 
     .second-content mat-card-header {
       justify-content: center;

@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private localStorage: LocalStorageService,
     private router: Router,
     private snackBar: MatSnackBar,
-    private jwtHelperService: JwtHelperService
+    private jwtHelperService: JwtHelperService,
   ) {
     this.buildForm();
   }
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // login() {
+  login() {
   //   this.loginService.login(this.form.value).subscribe(
   //     (result) => {
   //       this.localStorage.setItem('token', result.accessToken);
@@ -55,7 +55,8 @@ export class LoginComponent implements OnInit {
   //       });
   //     }
   //   );
-  // }
+    // this.store.dispatch(this.login({this.form.value}))
+  }
 
   getField(name: string) {
     return this.form.get(name);
