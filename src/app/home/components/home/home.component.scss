@@ -20,8 +20,6 @@ mat-toolbar {
 
 mat-toolbar .left-section {
   display: flex;
-  align-items: center;
-  justify-content: baseline;
 
   button {
     border: none;
@@ -33,12 +31,10 @@ mat-toolbar .left-section {
     span {
       font-size: 1.5rem;
       font-weight: bold;
-      color: $primary;
     }
 
     mat-icon {
       font-size: 2.5rem;
-      color: $primary;
       overflow: visible;
       margin-left: -2.5rem;
       height: 2.5rem;
