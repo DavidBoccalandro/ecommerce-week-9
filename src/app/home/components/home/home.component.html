@@ -1,4 +1,34 @@
-<button matbutton type="button" routerLink="cart">Cart</button>
-<button matbutton type="button" routerLink="products">Products</button>
-<h1>HOME</h1>
-<router-outlet></router-outlet>
+<mat-toolbar>
+  <div class="left-section">
+    <button matbutton type="button" routerLink="cart">
+      <mat-icon [ngClass]="navigation === 'cart' ? 'checkedClass' : 'uncheckedClass'"
+        (click)="navigationHandler('cart')">
+        shopping_cart
+      </mat-icon>
+    </button>
+    <button matbutton type="button" routerLink="products">
+      <span [ngClass]="navigation === 'products' ? 'checkedClass' : 'uncheckedClass'"
+        (click)="navigationHandler('products')">
+        Products
+      </span>
+    </button>
+  </div>
+  <div class="right-section">
+    <img [matMenuTriggerFor]="menu" src='../../../assets/avatar.svg' alt="avatar" class="avatar" />
+    <mat-menu #menu="matMenu" id="menu">
+      <p>
+        Nombre
+      </p>
+      <p>
+        Email
+      </p>
+      <button id="logout">
+        Logout
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+<div class="content-section">
+  <h1>HOME</h1>
+  <router-outlet></router-outlet>
+</div>

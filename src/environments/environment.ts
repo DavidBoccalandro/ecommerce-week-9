@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://trainee-program-api.applaudostudios.com/api/docs',
+  url: 'https://trainee-program-api.applaudostudios.com/api/v1',
 };
 
 /*

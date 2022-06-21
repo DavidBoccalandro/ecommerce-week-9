@@ -60,14 +60,6 @@
         #login-button {
           @include principal-button();
         }
-
-        span {
-          font-size: 14px;
-        }
-
-        #register-button {
-          @include secondary-button();
-        }
       }
 
     }

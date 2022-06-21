@@ -1,0 +1,56 @@
+@import '../../../../scss/colors';
+@import '../../../../scss/mixins';
+
+mat-toolbar {
+  justify-content: space-between;
+  background-color: $secondary;
+  padding: 2rem 1rem;
+
+  .avatar {
+    font-size: 50px;
+    height: 50px;
+    width: 50px;
+
+    &:hover {
+      cursor: pointer;
+      border-radius: 100%;
+    }
+  }
+}
+
+mat-toolbar .left-section {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+
+  button {
+    border: none;
+    background-color: transparent;
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+
+    span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $primary;
+    }
+
+    mat-icon {
+      font-size: 2.5rem;
+      color: $primary;
+      overflow: visible;
+      margin-left: -2.5rem;
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+  }
+
+  .checkedClass {
+    border-bottom: 2px solid $primary;
+  }
+}
+
+.content-section {
+  padding: 2rem;
+}
