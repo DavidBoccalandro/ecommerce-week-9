@@ -17,10 +17,14 @@
     <img [matMenuTriggerFor]="menu" src='../../../assets/avatar.svg' alt="avatar" class="avatar" />
     <mat-menu #menu="matMenu" id="menu">
       <p>
-        Nombre
+        <span>ID: </span>
+        {{ menuInfo.data?.user?.id }}
       </p>
       <p>
-        Email
+        <span>Name: </span>
+        {{ menuInfo.data?.user?.name }}
+      <p>
+        {{ menuInfo.data?.user?.email }}
       </p>
       <button id="logout" (click)="logout()">
         Logout
