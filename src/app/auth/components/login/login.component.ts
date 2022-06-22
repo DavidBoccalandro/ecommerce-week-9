@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-// import { LoginService } from '../../services/login.service';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { EMAIL_PATTERN, PASSWORD_PATTERN } from 'src/app/constants/patterns';
+import { Store } from '@ngrx/store';
+import * as userActions from '../../store/actions/user.action';
+import { LoginResponse } from '../../interfaces/login-response.interface';
 
 @Component({
   selector: 'app-login',
@@ -18,16 +17,23 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    // private loginService: LoginService,
     private localStorage: LocalStorageService,
-    private router: Router,
-    private snackBar: MatSnackBar,
-    private jwtHelperService: JwtHelperService,
+    private store: Store
   ) {
     this.buildForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.localStorage.checkUserLogged()) {
+      let response: LoginResponse = {
+        data: {
+          token: this.localStorage.getItem('token')!,
+          user: JSON.parse(this.localStorage.getItem('user')!),
+        },
+      };
+      this.store.dispatch(userActions.loginActionSuccess({ user: response }));
+    }
+  }
 
   buildForm() {
     this.form = this.fb.group({
@@ -40,22 +46,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-  //   this.loginService.login(this.form.value).subscribe(
-  //     (result) => {
-  //       this.localStorage.setItem('token', result.accessToken);
-  //       this.loginService.profile.next(
-  //         this.jwtHelperService.decodeToken(result.accessToken)
-  //       );
-  //       this.localStorage.setItem('refreshToken', result.refreshToken);
-  //       this.router.navigate(['home']);
-  //     },
-  //     () => {
-  //       this.snackBar.open('Email and/or Password invalid', 'Retry', {
-  //         duration: 3000,
-  //       });
-  //     }
-  //   );
-    // this.store.dispatch(this.login({this.form.value}))
+    let user = {
+      data: this.form.value,
+    };
+
+    this.store.dispatch(userActions.loginAction({ user }));
   }
 
   getField(name: string) {

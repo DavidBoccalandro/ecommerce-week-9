@@ -17,4 +17,14 @@ export class LocalStorageService {
   removeItem(key: string) {
     this.localStorage.removeItem(key);
   }
+
+  checkUserLogged() {
+    let token = this.getItem('token');
+    let user = this.getItem('user');
+    if (token && user) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

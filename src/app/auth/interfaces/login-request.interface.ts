@@ -1,9 +1,8 @@
 export interface LoginRequest {
-  data: User;
+  data?: User;
 }
 
 export interface User {
-  user: string;
   email: string;
   password: string;
 }

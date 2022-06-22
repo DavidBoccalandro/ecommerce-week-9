@@ -8,6 +8,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { loginReducer } from './store/reducer/user.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './store/effects/user.effect';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -20,6 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forFeature('user', loginReducer),
+    EffectsModule.forFeature([UserEffects]),
   ],
   providers: [LoginService],
   exports: [LoginComponent],

@@ -2,13 +2,21 @@
   <h3>Products</h3>
 </div>
 <div class="cards-container" ngFor>
-  <mat-card class="example-card">
+  <mat-card class="card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      <div class="like-container">
+        <div class="likes">
+          <img mat-card-image src="../../../../assets/broken-heart.png" alt="like" class="dislike">
+          <span>1</span>
+        </div>
+        <div class="likes">
+          <img mat-card-image src="../../../../assets/like.png" alt="like" class="like">
+          <span>2</span>
+        </div>
+      </div>
     </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img mat-card-image src="../../../../assets/cheetos.PNG" alt="product photo">
     <mat-card-content>
       <p>
         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
@@ -17,8 +25,11 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <button mat-button>ADD</button>
+      <mat-icon>
+        shopping_cart
+      </mat-icon>
+      <button mat-button>REMOVE</button>
     </mat-card-actions>
   </mat-card>
 </div>
