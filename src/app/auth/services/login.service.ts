@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class LoginService {
   url: string = environment.url;
+  
   constructor(
     private http: HttpClient,
     private localStorage: LocalStorageService,

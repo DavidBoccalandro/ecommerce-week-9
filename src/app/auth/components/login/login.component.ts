@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
           user: JSON.parse(this.localStorage.getItem('user')!),
         },
       };
+
       this.store.dispatch(userActions.loginActionSuccess({ user: response }));
     }
   }
@@ -45,15 +46,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  getField(name: string) {
+    return this.form.get(name);
+  }
+
   login() {
     let user = {
       data: this.form.value,
     };
 
     this.store.dispatch(userActions.loginAction({ user }));
-  }
-
-  getField(name: string) {
-    return this.form.get(name);
   }
 }
