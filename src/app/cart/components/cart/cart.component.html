@@ -1,14 +1,16 @@
 <div class="cards-header">
   <h3 style="margin-bottom:2rem;">Cart Page:</h3>
 </div>
-<mat-card class="example-card" *ngFor="let cartItem of cart.data.items">
-  <mat-card-title-group>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Medium</mat-card-subtitle>
-    <img mat-card-md-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-  </mat-card-title-group>
-  <mat-card-content>
-    {{cartItem | json}}
-  </mat-card-content>
-  <button (click)="removeItem(cartItem.id)">Remove</button>
-</mat-card>
+<div class="cards-container">
+  <mat-card class="card" *ngFor="let cartItem of cart.data.items">
+    <mat-card-title-group>
+      <mat-card-title>{{ cartItem.name }}</mat-card-title>
+      <mat-card-subtitle>{{ cartItem.description }}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      Order number: {{ cartItem.order_id }}
+      <span style="font-weight: bold;">Price: {{ cartItem.price | currency }}</span>
+    </mat-card-content>
+    <button (click)="removeItem(cartItem.id)">Remove</button>
+  </mat-card>
+</div>

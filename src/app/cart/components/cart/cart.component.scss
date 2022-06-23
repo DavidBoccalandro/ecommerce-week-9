@@ -1,4 +1,14 @@
-.example-card {
-  max-width: 400px;
-  margin-bottom: 8px;
+@import '../../../../scss/colors';
+
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+
+  .card {
+    max-width: 250px;
+    margin-bottom: 8px;
+    box-shadow: 0px 0px 5px $primary;
+  }
 }
