@@ -31,4 +31,38 @@ export class ProductsEffects {
       )
     )
   );
+
+  addProductToCartEffect = createEffect(() =>
+    this.actions$.pipe(
+      ofType(productsActions.addProductToCart),
+      mergeMap((action) =>
+        this.productsService.addProductToCart(action.data).pipe(
+          map((response) => {
+            this.snackBar.open(
+              'The product has been added to the cart successfully',
+              'Close',
+              { duration: 3000 }
+            );
+            return productsActions.addProductToCartSuccess({ data: response });
+          }),
+          catchError((error) => {
+            if (error.status === 422) {
+              this.snackBar.open(
+                'This product already exist in the cart',
+                'Retry',
+                {
+                  duration: 3000,
+                }
+              );
+            } else {
+              this.snackBar.open(error.statusText, 'Retry', {
+                duration: 3000,
+              });
+            }
+            throw error;
+          })
+        )
+      )
+    )
+  );
 }

@@ -23,4 +23,18 @@ export class ProductsComponent implements OnInit {
       console.log('Con THIS', this.products);
     });
   }
+
+  addProductToCart(id: number) {
+    let cartSlice = {
+      data: {
+        items: [
+          {
+            product_variant_id: id,
+            quantity: 1,
+          },
+        ],
+      },
+    };
+    this.store.dispatch(productsActions.addProductToCart({ data: cartSlice }));
+  }
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { environment } from 'src/environments/environment';
+import { ProductCartResponse } from '../interfaces/product-cart-response.interface';
 import { ProductsResponse } from '../interfaces/products-response.interface';
 
 @Injectable()
@@ -30,5 +31,13 @@ export class ProductsService {
           throw error;
         })
       );
+  }
+
+  addProductToCart(body: any) {
+    return this.http.post<ProductCartResponse>(`${this.url}/cart`, body, {
+      headers: {
+        Authorization: `Bearer ${this.localStorage.getItem('token')}`,
+      },
+    });
   }
 }
