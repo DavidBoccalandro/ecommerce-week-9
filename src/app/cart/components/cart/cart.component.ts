@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import {
+  getCartAction,
+  removeItemAction,
+} from '../../store/actions/cart.action';
+import { AppStateWithCart } from '../../store/reducer/cart.reducer';
+import { cartSelector } from '../../store/selectors/cart.selectors';
 
 @Component({
   selector: 'app-cart',
@@ -6,11 +13,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
+  cart!: any;
 
-  constructor() {}
+  constructor(private store: Store<AppStateWithCart>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(getCartAction());
+    this.store.select(cartSelector).subscribe((cart) => {
+      this.cart = cart;
+    });
+  }
+
+  removeItem(id: number) {
+    let cartSlice = {
+      data: {
+        items: [
+          {
+            id: id,
+            _destroy: true,
+          },
+        ],
+      },
+    };
+    this.store.dispatch(removeItemAction({ item: cartSlice }));
+  }
 }

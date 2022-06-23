@@ -14,8 +14,8 @@ export interface ProductCartResponse {
 
 export interface ProductCartItem {
   id?: number;
-  quantity: number;
-  product_variant_id: number;
+  quantity?: number;
+  product_variant_id?: number;
   product_id?: number;
   order_id?: number;
   total?: string;

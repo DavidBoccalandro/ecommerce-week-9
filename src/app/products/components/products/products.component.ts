@@ -19,8 +19,6 @@ export class ProductsComponent implements OnInit {
 
     this.store.select(productsSelector).subscribe((products) => {
       this.products = products;
-      console.log('Solo products', products);
-      console.log('Con THIS', this.products);
     });
   }
 
