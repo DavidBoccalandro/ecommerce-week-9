@@ -1,25 +1,56 @@
-.cards-container .card {
-  .mat-card-header {
+@import '../../../../scss/colors';
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    box-shadow: 0px 0px 5px $primary;
 
-    .mat-card-header-text {
-      margin: 0;
+    .mat-card-header {
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .mat-card-header-text {
+        margin: 0;
+      }
+
+      .mat-card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .like-container {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .likes {
+          display: flex;
+          margin-top: 16px;
+        }
+      }
     }
 
-    .mat-card-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .like-container {
+    .mat-card-content {
       display: flex;
+      justify-content: center;
+
+      span {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+
+    .mat-card-actions {
+      display: flex;
+      justify-content: center;
       align-items: center;
       gap: 20px;
-
-      .likes {
-        display: flex;
-      }
     }
   }
 }
