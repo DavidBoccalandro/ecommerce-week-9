@@ -3,12 +3,12 @@ import { AppState } from 'src/app/app.reducer';
 import { ProductsResponse } from '../../interfaces/products-response.interface';
 import { getProductsSuccess } from '../actions/products.action';
 
-export interface AppStateWithUser extends AppState {
+export interface AppStateWithProducts extends AppState {
   products: ProductsResponse;
 }
 
 export const initialState: ProductsResponse = {
-  data: undefined,
+  data: [],
 };
 
 export const productsReducer = createReducer(
